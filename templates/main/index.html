@@ -1,0 +1,59 @@
+<html dir="rtl" lang="ar">
+{% block title %}
+<title>سجلات معمل الحاسب</title>
+{% endblock %}
+
+{% load static %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+    integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+    crossorigin="anonymous"></script>
+
+{% block navbar %}
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">الصفحة الرئيسية</a>
+    </div>
+</nav>
+{% endblock %}
+
+{% block header %}
+<h1 class="p-5">
+    الصفحة الرئيسية
+    <br>
+    يمكن تصفح القوائم التالية في الموقع:
+</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container px-2">
+    <div class="row justify-content-center">
+        <div class="py-2 text-center" style="width: 25rem">
+            <a href="{% url 'lab' %}" class="btn btn-primary btn-lg py-2" style="width: 25rem">القائمة الرئيسية
+                للمعمل</a>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="py-2" style="width: 25rem">
+            <a href="{% url 'teachers' %}" class="btn btn-primary btn-lg py-2" style="width: 25rem">قائمة المعلمين المسجلين
+                بالمعمل</a>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="py-2" style="width: 25rem">
+            <a href="{% url 'students' %}" class="btn btn-primary btn-lg py-2" style="width: 25rem">قائمة الطلاب
+                المسجلين بالمعمل</a>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="py-2" style="width: 25rem">
+            <a href="{% url 'maintainance' %}" class="btn btn-primary btn-lg py-2" style="width: 25rem">قائمة الصيانات
+                بالمعمل</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</div>
+
+</html>

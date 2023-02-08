@@ -1,0 +1,36 @@
+{% extends "main/lab.html" %}
+
+{% load my_filters %}
+{% block header%}
+<h2 class="p-5">جدول المعلمين المسجلين بالمعمل: </h3>
+{% endblock %}
+
+{% block content %}
+<div class="px-4">
+  {% if teachers %}
+  <table class="table table-bordered table-striped table-success" style="width:60rem">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">اسم الطالب</th>
+        <th scope="col">عدد الطلاب المسجلين مع المعلم</th>
+        <th scope="col">يوم المعلم</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for teacher in teachers %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ teacher.name }}</td>
+        <td>{{ teacher.student_set|count }}</td>
+        <td>{{ teacher.day|day }}</td>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <h2>لا يوجد جدول بالمعلمين</h2>
+  {% endif %}
+</div>
+{% endblock %}

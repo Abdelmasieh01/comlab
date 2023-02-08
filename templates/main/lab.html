@@ -1,0 +1,40 @@
+{% extends "main/index.html" %}
+{% load my_filters %}
+{% block header %}
+<h3 class="p-5">
+  عدد المعلمين المسجلين: <a href="{% url 'teachers' %}">{{ teachers }}</a>
+  <br>
+  عدد الطلاب المسجلين: <a href="{% url 'students' %}">{{ students }}</a>
+  <br>
+  عدد الصيانات بالمعمل: <a href="{% url 'maintainance' %}">{{ maintainances }}</a>
+</h3>
+{% endblock %}
+
+{% block content %}
+<div class="px-4">
+  {% if devices %}
+  <h1>جدول أجهزة المعمل:</h1>
+  <table class="table table-bordered table-striped table-success" style="width:60rem">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">نوع الجهاز</th>
+        <th scope="col">حالة الجهاز</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for device in devices %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ device.type }}</td>
+        <td>{{ device.state|get_state }}</td>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <h2>لا يوجد جدول بالمعلمين</h2>
+  {% endif %}
+</div>
+{% endblock %}

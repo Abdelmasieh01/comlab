@@ -1,0 +1,36 @@
+{% extends "main/lab.html" %}
+
+{% load my_filters %}
+{% block header%}
+<h2 class="p-5">جدول الصيانات بالمعمل: </h3>
+{% endblock %}
+
+{% block content %}
+<div class="px-4">
+  {% if maintainances %}
+  <table class="table table-bordered table-striped table-success" style="width:60rem">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">اسم شركة الصيانة</th>
+        <th scope="col">تاريخ بداية الصيانة</th>
+        <th scope="col">عدد أيام الصيانة</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for maintainance in maintainances %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ maintainance.company }}</td>
+        <td>{{ maintainance.start_date|date:"d/m/Y" }}</td>
+        <td>{{ maintainance.duration }}</td>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <h2>لا يوجد جدول بالصيانات</h2>
+  {% endif %}
+</div>
+{% endblock %}

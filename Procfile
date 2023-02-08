@@ -1,0 +1,1 @@
+web: gunicorn comlab.wsgi --log-file -
